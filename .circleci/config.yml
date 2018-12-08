@@ -1,83 +1,20 @@
-aliases:
-  - &yarn
-    yarn install --non-interactive --cache-folder ~/.cache/yarn
 
-  - &restore-yarn-cache
-    restore-cache:
-      keys:
-        - yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}
-        # Fallback in case checksum fails
-        - yarn-{{ .Branch }}-
 
-  - &save-yarn-cache
-    savw-cache:
-      paths:
-        - node_modules
-        - ~/.cache/yarn
-      key: yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}
-
-  - &filter-only-master
-    branches:
-      only:
-        - master
-
-  - &filter-ignore-gh-pages
-    branches:
-      ignore: gh-pages
-
-  - &defaults
-    working_directory: ~/cucumber-extended
-    docker:
-      - image: circleci/node:10
-
-version: 2
-
+version: 2.1
 description: |
   CircleCI Config for Cucumber Extended Sublime Text 3 Plugin
 
 jobs:
-  checkout_code:
-    <<: *defaults
+  say_hello:
+    working_directory: ~/sublime-cucumber-extended
+    docker:
+      - image: circleci/node:10
     steps:
       - checkout
-      - *restore-yarn-cache
-      - run: yarn install
-      - *save-yarn-cache
-      - persist_to_workspace:
-        root: .
-        paths:
-          - .
-  test:
-    <<: *defaults
-    steps:
-      - run:
-          name: Running Plugin Tests
-          command: |
-            yarn lint:plugin
-            yarn prettier:plugin
-            yarn test:plugin
+      - echo "Hello World"
 
-      - run:
-          name: Running Site Tests
-          command: |
-            yarn lint:site
-            yarn prettier:site
-            yarn test:site
-  build:
-    <<: *defaults
-    steps:
-      - run:
-          name: Building
-          command: |
-            yarn build:site:prod
 workflows:
-  version: 2
-  production:
+  version: 2.1
+  hello_world:
     jobs:
-      - checkout_code
-      - test:
-          requires:
-            - checkout_code
-      - build:
-          requires:
-            - test
+      - say_hello
