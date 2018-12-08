@@ -25,9 +25,7 @@ jobs:
           command: yarn install
 
       - save_cache:
-          keys:
-            - '{{ $CIRCLE_TAG }}-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}'
-            - '-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}'
+          key: '{{ $CIRCLE_TAG }}-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}'
           paths:
             - ~/.cache/yarn
 
