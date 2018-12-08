@@ -9,13 +9,15 @@ jobs:
     working_directory: ~/sublime-cucumber-extended
     docker:
       - image: circleci/node:10
+    environment:
+      VERSION_TAG: 0.0.1
     steps:
       - checkout
       - restore_cache:
           keys:
-            - '{{ $CIRCLE_TAG }}-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}'
-            - '{{ $CIRCLE_TAG }}-yarn-{{ .Branch }}-'
-            - '{{ $CIRCLE_TAG }}-yarn-'
+            - '{{ $VERSION_TAG }}-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}'
+            - '{{ $VERSION_TAG }}-yarn-{{ .Branch }}-'
+            - '{{ $VERSION_TAG }}-yarn-'
             - '-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}'
             - '-yarn-{{ .Branch }}-'
             - '-yarn-'
@@ -25,7 +27,7 @@ jobs:
           command: yarn install
 
       - save_cache:
-          key: '{{ $CIRCLE_TAG }}-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}'
+          key: '{{ $VERSION_TAG }}-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}'
           paths:
             - ~/.cache/yarn
 
