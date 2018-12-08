@@ -9,8 +9,6 @@ jobs:
     working_directory: ~/sublime-cucumber-extended
     docker:
       - image: circleci/node:10
-    environment:
-      VERSION_TAG: 0.0.1
     steps:
       - checkout
       - restore_cache:
