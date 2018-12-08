@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+When ${1:context} $0
+]]></content>
+	<tabTrigger>when</tabTrigger>
+	<description>(Cucumber) When ...</description>
+	<scope>text.cucumber.gherkin.feature</scope>
+</snippet>

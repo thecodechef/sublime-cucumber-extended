@@ -1,0 +1,24 @@
+%YAML 1.2
+---
+
+name: Feature (Annotations)
+hidden: true
+scope: text.cucumber.gherkin.feature
+variables:
+  annotations: '\b(Feature|Background|Scenario|Scenario(?: Outline| Template)|Examples?)\b' 
+contexts:
+
+  main:
+    - match: '{{annotations}}'
+      scope: keyword.declaration.annotations.cucumber.gherkin.feature
+      push:
+        - match: (:)
+          captures:
+            1: punctuation.accessor.colon.cucumber.gherkin.feature
+          push:
+            - match: \s*([a-zA-Z0-9\-_ ]*)
+              captures:
+                1: string.unquoted.annotations.title.cucumber.gherkin.feature
+              pop: true
+        - match: \s*$
+          pop: true

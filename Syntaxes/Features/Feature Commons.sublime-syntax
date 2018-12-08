@@ -1,0 +1,101 @@
+%YAML 1.2
+---
+
+name: Feature (Commons)
+hidden: true
+scope: text.cucumber.gherkin.feature
+contexts:
+  main:
+    - include: punctuations
+    - include: numbers
+    - include: operators
+    - include: backtick_quoted_strings
+    - include: single_quoted_strings
+    - include: double_quoted_strings
+    - include: variables
+  
+  punctuations:
+    - match: ':'
+      scope: punctuation.accessor.colon.cucumber.gherkin.feature
+    - match: '\['
+      scope: punctuation.section.brackets.begin.cucumber.gherkin.feature
+      push:
+        - meta_scope: meta.brackets.cucumber.gherkin.feature string.unquoted.cucumber.gherkin.feature
+        - match: '\]'
+          scope: punctuation.section.brackets.end.cucumber.gherkin.feature
+          pop: true
+    - match: '\('
+      scope: punctuation.section.parens.begin.cucumber.gherkin.feature
+      push:
+        - meta_scope: meta.parens.cucumber.gherkin.feature string.unquoted.cucumber.gherkin.feature
+        - match: '\)'
+          scope: punctuation.section.parens.end.cucumber.gherkin.feature
+          pop: true
+    - match: '\{'
+      scope: punctuation.section.braces.begin.cucumber.gherkin.feature
+      push:
+        - meta_scope: meta.braces.cucumber.gherkin.feature string.unquoted.cucumber.gherkin.feature
+        - match: '\}'
+          scope: punctuation.section.braces.end.cucumber.gherkin.feature
+          pop: true
+    - match: '\#'
+      scope: punctuation.section.constant.begin.cucumber.gherkin.feature
+      push:
+        - meta_scope: meta.constant.cucumber.gherkin.feature constant.character.escape.cucumber.gherkin.feature
+        - match: '\;'
+          scope: punctuation.section.constant.end.cucumber.gherkin.feature
+          pop: true
+  
+  operators:
+    - match: '='
+      scope: keyword.operator.assignment.cucumber.gherkin.feature
+    - match: '(\+|\-|\*|\*\*|\\)'
+      scope: keyword.operator.arithmetic.cucumber.gherkin.feature
+  
+  numbers:
+    - match: '[0-9]'
+      scope: constant.numeric.integer.cucumber.gherkin.feature
+    - match: '[0-9]*'
+      scope: constant.numeric.integer.big.cucumber.gherkin.feature
+    - match: '[0-9]*\.[0-9]*'
+      scope: constant.numeric.integer.float.cucumber.gherkin.feature
+  
+  backtick_quoted_strings:
+    - match: '\`'
+      scope: punctuation.definition.string.quoted.interpolation.begin.cucumber.gherkin.feature
+      push:
+        - meta_scope: meta.interpolation.cucumber.gherkin.feature string.unquoted.cucumber.gherkin.feature
+        - match: '\`'
+          scope: punctuation.definition.string.quoted.interpolation.end.cucumber.gherkin.feature
+          pop: true
+  
+  single_quoted_strings:
+    - match: "'"
+      scope: punctuation.definition.string.quoted.single.begin.cucumber.gherkin.feature
+      push:
+        - meta_scope: string.quoted.single.cucumber.gherkin.feature
+        - match: "'"
+          scope: punctuation.definition.string.quoted.single.end.cucumber.gherkin.feature
+          pop: true
+        - match: \\.
+          scope: constant.character.escape.untitled.cucumber.gherkin.feature
+  
+  double_quoted_strings:
+    - match: '"'
+      scope: punctuation.definition.string.quoted.double.begin.cucumber.gherkin.feature
+      push:
+        - meta_scope: string.quoted.double.cucumber.gherkin.feature
+        - match: '"'
+          scope: punctuation.definition.string.quoted.double.end.cucumber.gherkin.feature
+          pop: true
+        - match: \\.
+          scope: constant.character.escape.untitled.cucumber.gherkin.feature
+  
+  variables:
+    - match: "<"
+      scope: punctuation.definition.keyword.variables.begin.cucumber.gherkin.feature
+      push:
+        - meta_scope: constant.language.variables.cucumber.gherkin.feature
+        - match: ">"
+          scope: punctuation.definition.keyword.variables.end.cucumber.gherkin.feature
+          pop: true

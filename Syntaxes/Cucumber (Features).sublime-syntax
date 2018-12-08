@@ -1,0 +1,18 @@
+%YAML 1.2
+---
+# http://www.sublimetext.com/docs/3/syntax.html
+name: Cucumber (Features)
+file_extensions:
+  - .cucumber.feature
+first_line_match: '^\s*# language: en'
+scope: text.cucumber.gherkin.feature
+
+contexts:
+  main:
+    - include: Feature Comments.sublime-syntax
+    - include: Feature Tags.sublime-syntax
+    - include: Feature Annotations.sublime-syntax
+    - include: Feature Steps.sublime-syntax
+    - include: Feature DataTables.sublime-syntax
+    
+  

@@ -1,0 +1,20 @@
+%YAML 1.2
+---
+
+name: Feature (Data Tables)
+hidden: true
+scope: text.cucumber.gherkin.feature
+contexts:
+
+  main:
+
+    - match: ^\s*\|
+      scope: keyword.control.data-table.pipe.begin.cucumber.gherkin.feature
+      push:
+        - match: \w
+          scope: entity.name.function.data-table.words.cucumber.gherkin.feature
+        - match: \|
+          scope: keyword.control.data-table.pipe.spacer.cucumber.gherkin.feature
+        - match: \|\s*$
+          scope: keyword.control.data-table.pipe.end.cucumber.gherkin.feature
+          pop: true

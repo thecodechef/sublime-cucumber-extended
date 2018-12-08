@@ -1,0 +1,24 @@
+%YAML 1.2
+---
+
+name: Feature (Steps)
+hidden: true
+scope: text.cucumber.gherkin.feature
+variables:
+  steps: '\b(Given|When|Then|And|But)\b'
+contexts:
+  
+  main:
+    
+    - match: '(^\s*)({{steps}})'
+      captures:
+        0: meta.annotation.steps.cucumber.gherkin.feature
+        1: text.cucumber.gherkin.feature
+        2: keyword.control.steps.cucumber.gherkin.feature
+      push:
+        - include: Feature Commons.sublime-syntax
+        - match: \s*([a-zA-Z_ ]*)
+          captures:
+            1: support.other.steps.cucumber.gherkin.feature
+        - match: \s*$
+          pop: true

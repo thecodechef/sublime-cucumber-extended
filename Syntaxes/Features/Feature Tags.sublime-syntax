@@ -1,0 +1,14 @@
+%YAML 1.2
+---
+
+name: Feature (Tags)
+hidden: true
+scope: text.cucumber.gherkin.feature
+contexts:
+
+  main:
+
+    - match: '^\s*(@)([^@\r\n\t ]+)'
+      captures:
+        1: entity.name.function.tag.cucumber.gherkin.feature
+        2: support.type.tag.cucumber.gherkin.feature

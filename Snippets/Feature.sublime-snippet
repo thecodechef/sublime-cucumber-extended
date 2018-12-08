@@ -1,0 +1,13 @@
+<snippet>
+	<content><![CDATA[
+Feature: ${1:name}
+    In order to ${2:value}
+    As a ${3:role}
+    I want ${4:feature}
+    
+    $0
+]]></content>
+	<tabTrigger>feat</tabTrigger>
+	<description>(Cucumber) Feature: ...</description>
+	<scope>text.cucumber.gherkin.feature</scope>
+</snippet>

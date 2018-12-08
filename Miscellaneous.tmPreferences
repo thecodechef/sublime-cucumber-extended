@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Indent</string>
+	<key>scope</key>
+	<string>text.cucumber.gherkin.feature</string>
+	<key>settings</key>
+	<dict>
+		<key>decreaseIndentPattern</key>
+		<string><![CDATA[(?x)^
+		(\s*
+			\b(Feature:|Background:|Scenario( Outline| Template)?:|Examples?:)\b
+		).*$
+		]]></string>
+		<key>increaseIndentPattern</key>
+		<string><![CDATA[(?x)^
+		(\s*
+			\b(Feature:|Background:|Scenario( Outline| Template)?:|Examples?:|Given|Then|When|And|But)\b
+		).*$
+		]]></string>
+	</dict>
+</dict>
+</plist>

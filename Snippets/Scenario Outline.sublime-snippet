@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+Scenario Outline: ${1:title}
+    Given ${2:context}
+    When ${3:event}
+    Then ${4:outcome}
+]]></content>
+	<tabTrigger>sco</tabTrigger>
+	<description>(Cucumber) Scenario Outline: ...</description>
+	<scope>text.cucumber.gherkin.feature</scope>
+</snippet>

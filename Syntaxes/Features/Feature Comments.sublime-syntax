@@ -1,0 +1,56 @@
+%YAML 1.2
+---
+
+name: Feature (Comments)
+hidden: true
+scope: text.cucumber.gherkin.feature
+variables:
+  comment_block_begin: ^\s*(\=begin)$
+  comment_block_end: ^\s*(\=end)$
+contexts:
+
+  main:
+    - include: line_comments
+    - include: block_comments
+    - include: docstring_comments
+    - include: description_comments
+  
+  line_comments:
+    - match: '(^\s*)(#)'
+      captures:
+        1: text.cucumber.gherkin.feature
+        2: comment.line.number-sign.cucumber.gherkin.feature
+      push:
+        - match: '\s*language'
+          scope: keyword.control.tag.lang.cucumber.gherkin.feature
+          push:
+            - meta_scope: meta.block.lang.cucumber.gherkin.feature
+            - match: '\:'
+              scope: punctuation.accessor.colon.cucumber.gherkin.feature
+            - match: \s*([a-z][a-z](?:-[A-Z][A-Z])?)
+              scope: string.unquoted.lang.cucumber.gherkin.feature
+              pop: true
+        - match: (.*)$
+          scope: comment.line.cucumber.gherkin.feature
+          pop: true
+  block_comments:
+    - match: "{{comment_block_begin}}"
+      scope: comment.block.documentation.begin.cucumber.gherkin.feature
+      push:
+        - meta_scope: comment.block.documentation.cucumber.gherkin.feature
+        - match: "{{comment_block_end}}"
+          scope: comment.block.documentation.end.cucumber.gherkin.feature
+          pop: true
+  docstring_comments:
+    - match: '"""'
+      scope: punctuation.definition.comment.docstring.begin.cucumber.gherkin.feature
+      push:
+        - meta_scope: string.docstring.cucumber.gherkin.feature
+        - match: '"""'
+          scope: punctuation.definition.comment.docstring.end.cucumber.gherkin.feature
+          pop: true
+  description_comments:
+    - match: '^\s*([a-zA-Z0-9\-_ ]*)(\.)$'
+      captures:
+        0: comment.block.description-comments.cucumber.gherkin.feature
+        

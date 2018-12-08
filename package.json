@@ -1,0 +1,63 @@
+{
+	"name": "sublime-cucumber-extended",
+	"description": "A Sublime Text 3 Plugin ",
+	"author": "Jeremy Bolding <cyberchefjay@gmail.com> (http://thecodechef.github.io)",
+	"version": "0.0.1",
+	"main": "",
+	"engine": {
+		"node": "^10.14.1"
+	},
+	"licence": "MIT",
+	"categories": [
+		"Snippets",
+		"Syntaxes"
+	],
+	"keywords": [
+		"sublime-text",
+		"sublime-text-3",
+		"cucumber",
+		"cucumber-js"
+		"cucumber-ruby"
+		"gherkin",
+		"bdd",
+		"ruby"
+	],
+  "scripts": {
+    "lint:plugin":"yarn lint",
+    "lint:site":"cd website && yarn lint",
+
+    "test:plugin":"yarn cucumber-js",
+    "test:site":"cd website && yarn cucumber-js",
+
+    "build:site:dev":"cd website && jekyll build",
+    "build:site:prod":"cd website && jekyll build --production",
+
+    "serve:site":"cd website && jekyll serve",
+
+    "prettier:plugin": "yarn prettier",
+    "prettier:site": "cd webite && yarn prettier",
+    "prettier": "yarn prettier:plugin && yarn prettier:site",
+
+    "precommit": "lint-staged"
+  },
+	"repository": {
+		"type": "git",
+		"url": "https://www.github.com/thecodechef/sublime-cucumber-extended.git"
+	},
+  "bugs": "https://www.github.com/thecodechef/sublime-cucumber-extended/issues/new",
+	"devDependencies": {
+		"husky": "^0.14.3",
+		"lint-staged": "^7.2.0",
+    "prettier": "^1.13.7"
+	},
+	"lint-staged": {
+		"linters": {
+      "tests/**/*.ts": ["yarn lint --fix","yarn prettier:ts","git add"],
+      "website/tests/**/*.ts": ["yarn lint --fix","yarn prettier:ts","git add"]
+		}
+	},
+	"greenkeeper": {
+		"ignore": []
+	}
+
+}

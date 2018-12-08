@@ -1,0 +1,8 @@
+<snippet>
+	<content><![CDATA[
+And ${1:context} $0
+]]></content>
+	<tabTrigger>a</tabTrigger>
+	<description>(Cucumber) And ...</description>
+	<scope>text.cucumber.gherkin.feature</scope>
+</snippet>

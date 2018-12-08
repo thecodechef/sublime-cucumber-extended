@@ -1,0 +1,12 @@
+<snippet>
+	<content><![CDATA[
+Scenario: ${1:title}
+    Given ${2:context}
+    When ${3:event}
+    Then ${4:outcome}
+    $0
+]]></content>
+	<tabTrigger>sc</tabTrigger>
+	<description>(Cucumber) Scenario: ...</description>
+	<scope>text.cucumber.gherkin.feature</scope>
+</snippet>
