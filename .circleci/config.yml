@@ -15,19 +15,14 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - '{{ $VERSION_TAG }}-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}'
-            - '{{ $VERSION_TAG }}-yarn-{{ .Branch }}-'
-            - '{{ $VERSION_TAG }}-yarn-'
-            - '-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}'
-            - '-yarn-{{ .Branch }}-'
-            - '-yarn-'
-
+            - 'yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}'
+            - 'yarn-{{ .Branch }}-'
       - run:
           name: Running Yarn Install
           command: yarn install
 
       - save_cache:
-          key: '{{ $VERSION_TAG }}-yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}'
+          key: 'yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}'
           paths:
             - ~/.cache/yarn
 
