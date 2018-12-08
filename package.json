@@ -1,23 +1,18 @@
 {
 	"name": "sublime-cucumber-extended",
-	"description": "A Sublime Text 3 Plugin ",
+	"description": "A Sublime Text 3 Plugin for better Cucumber Syntax Highlighting",
 	"author": "Jeremy Bolding <cyberchefjay@gmail.com> (http://thecodechef.github.io)",
 	"version": "0.0.1",
-	"main": "",
 	"engine": {
 		"node": "^10.14.1"
 	},
 	"licence": "MIT",
-	"categories": [
-		"Snippets",
-		"Syntaxes"
-	],
 	"keywords": [
 		"sublime-text",
 		"sublime-text-3",
 		"cucumber",
-		"cucumber-js"
-		"cucumber-ruby"
+		"cucumber-js",
+		"cucumber-ruby",
 		"gherkin",
 		"bdd",
 		"ruby"
