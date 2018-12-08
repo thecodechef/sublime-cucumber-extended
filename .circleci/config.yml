@@ -11,7 +11,9 @@ jobs:
       - image: circleci/node:10
     steps:
       - checkout
-      - echo "Hello World"
+      - run:
+          name: Saying Hello to the World
+          command: echo "Hello World"
 
 workflows:
   version: 2.1
